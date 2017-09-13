@@ -13,7 +13,7 @@ const testWithoutConfig = () => {
 
   console.log(`--------`);
 
-  Log.init('system', 'ALL');
+  Log.init(Log.category.system, Log.level.ALL);
   Log[CATEGORY].trace(`this is trace with empty config`);
   Log[CATEGORY].debug(`this is debug with empty config`);
   Log[CATEGORY].info(`this is info with empty config`);
@@ -23,7 +23,7 @@ const testWithoutConfig = () => {
 
 };
 
-describe(`ns-log#${CATEGORY}`, () => {
+describe(`日志模块测试#${CATEGORY}`, () => {
 
   it('should output log', testWithoutConfig);
 
