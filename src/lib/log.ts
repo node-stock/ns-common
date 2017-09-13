@@ -5,7 +5,7 @@
  */
 const log4js = require('log4js');
 
-enum Category {
+export enum Category {
   system = 'system',
   alert = 'alert',
   mackerelservice = 'mackerelservice',
@@ -14,7 +14,7 @@ enum Category {
 }
 
 
-enum Level {
+export enum Level {
   ALL = 'ALL',
   TRACE = 'TRACE',
   DEBUG = 'DEBUG',
@@ -23,13 +23,6 @@ enum Level {
   ERROR = 'ERROR',
   FATAL = 'FATAL',
   OFF = 'OFF'
-}
-
-export interface ConfigObject {
-  [category: string]: {
-    filename: string,
-    level: string
-  }
 }
 
 const LogLayout = {
@@ -54,7 +47,8 @@ const createConfig = (category: string, level: string) => ({
  * @classdesc 日志对象
  */
 export class Log {
-
+  static category = Category;
+  static level = Level;
   static system = createLogger(Category.system);
   static alert = createLogger(Category.alert);
   static mackerelservice = createLogger(Category.mackerelservice);

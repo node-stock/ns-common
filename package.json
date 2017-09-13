@@ -6,7 +6,7 @@
     "type": "git",
     "url": "https://github.com/node-stock/ns-common"
   },
-  "license": "GPL3",
+  "license": "GPL-3.0",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
@@ -16,7 +16,15 @@
     "test": "mocha dist/**/*.test.js --timeout 3000 --require intelli-espower-loader",
     "prepare": "tsc -p tsconfig.json"
   },
-  "dependencies": {},
+  "dependencies": {
+    "datejs": "^1.0.0-rc3",
+    "es6-promise": "^4.1.1",
+    "fast-csv": "^2.4.0",
+    "isomorphic-fetch": "^2.2.1",
+    "japanese-holidays": "^1.0.6",
+    "lodash": "^4.17.4",
+    "moment": "^2.18.1"
+  },
   "devDependencies": {
     "@types/config": "0.0.32",
     "@types/log4js": "0.0.32",
@@ -24,6 +32,7 @@
     "@types/node": "^8.0.20",
     "@types/power-assert": "^1.4.29",
     "intelli-espower-loader": "^1.0.1",
+    "@types/datejs": "0.0.30",
     "log4js": "^2.3.3",
     "mocha": "^3.5.0",
     "power-assert": "^1.4.4",
