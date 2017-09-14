@@ -115,7 +115,7 @@ describe('工具模块测试', () => {
   it('判断是否为交易时间', testIsTradeTime);
   it('获取当前日时', testGetNowDatetime);
   it('获取当前日期', testGetNowDate);
-  it('获取http(s)资源', testFetch);
-  it('获取csv格式数据', testGetCsvData);
+  // it('获取http(s)资源', testFetch);
+  // it('获取csv格式数据', testGetCsvData);
 
 });

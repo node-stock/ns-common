@@ -2,6 +2,10 @@
   "name": "@node-stock/ns-common",
   "version": "0.0.1",
   "description": "node-stock common module",
+  "keywords": [
+    "ns-common",
+    "node-stock"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/node-stock/ns-common"
