@@ -1,6 +1,6 @@
 {
-  "name": "@node-stock/ns-common",
-  "version": "0.0.1",
+  "name": "ns-common",
+  "version": "0.0.2",
   "description": "node-stock common module",
   "keywords": [
     "ns-common",
@@ -27,6 +27,7 @@
     "isomorphic-fetch": "^2.2.1",
     "japanese-holidays": "^1.0.6",
     "lodash": "^4.17.4",
+    "log4js": "^2.3.3",
     "moment": "^2.18.1"
   },
   "devDependencies": {
@@ -37,7 +38,6 @@
     "@types/power-assert": "^1.4.29",
     "intelli-espower-loader": "^1.0.1",
     "@types/datejs": "0.0.30",
-    "log4js": "^2.3.3",
     "mocha": "^3.5.0",
     "power-assert": "^1.4.4",
     "rimraf": "^2.6.2",
