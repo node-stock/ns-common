@@ -3,3 +3,9 @@
 # ns-common
 
 node-stock工具包
+
+## 安装
+
+```js
+npm install ns-common --save
+```
