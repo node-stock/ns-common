@@ -88,23 +88,24 @@ const testGetNowDate = () => {
   console.log('获取当前日期', util.getNowDate());
 }
 
-const testFetch  = async () => {
+const testFetch = async (done: any) => {
   const url = 'https://hesonogoma.com/stocks/data/japan-all-stock-data.json';
   const url2 = 'http://k-db.com/stocks/6553-T';
   const url3 = 'http://k-db.com/stocks/6553-T?download=csv';
   const test = await util.fetch(url);
   const res: string = await test.text();
-  console.log(res.substring(0, 10));
-  const test2 = await util.fetch(url2);
-  const res2: string = await test2.text();
-  console.log(res2.substring(0, 10));
+  console.log(res.substring(0, 100));
+  // const test2 = await util.fetch(url2);
+  // const res2: string = await test2.text();
+  // console.log(res2.substring(0, 10));
+  done();
 }
 
-const testGetCsvData  = async () => {
+const testGetCsvData = async (done: any) => {
   const url = 'http://k-db.com/stocks/6553-T?download=csv';
-  await util.getCsvData('3543', url, (arr: any[]) => {
-    console.log(arr[1]);
-  });
+  const res = await util.getCsvData('3543', url);
+  console.log(res[1]);
+  done();
 }
 
 describe('工具模块测试', () => {
@@ -115,7 +116,13 @@ describe('工具模块测试', () => {
   it('判断是否为交易时间', testIsTradeTime);
   it('获取当前日时', testGetNowDatetime);
   it('获取当前日期', testGetNowDate);
-  // it('获取http(s)资源', testFetch);
-  // it('获取csv格式数据', testGetCsvData);
+  it('获取http(s)资源', function (done) {
+    this.timeout(10000);
+    testFetch(done);
+  });
+  it('获取csv格式数据', function (done) {
+    this.timeout(10000);
+    testGetCsvData(done)
+  });
 
 });
