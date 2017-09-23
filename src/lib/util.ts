@@ -7,7 +7,7 @@ const moment = require('moment');
 const _ = require('lodash');
 require('isomorphic-fetch');
 const jpHolidays = require('japanese-holidays');
-const csv = require('fast-csv');
+const csvjson = require('csvjson');
 require('datejs');
 const DateJs = <any>Date;
 
@@ -88,28 +88,18 @@ export class Util {
 	 * @param  {string}   url 资源url路径
 	 */
   static fetch = async (url: string) => {
-    const response = await fetch(url);
-    return await response;
+    return await fetch(url);
   }
   /**
    * 获取csv格式数据
    * @func getCsvData
    * @param  {string}   code 股票代码
    * @param  {string}   url 资源url路径
-   * @param  {requestCallback} fn  回调函数
    */
-  static getCsvData = async (code: string, url: string, fn: any) => {
+  static getCsvData = async (code: string, url: string) => {
     const response = await fetch(url);
     const res = await response.text();
-    const dataArr: any[] = [];
-    csv.fromString(res)
-      .on('data', (data: any[]) => {
-        data.splice(0, 0, code);
-        dataArr.push(data);
-      })
-      .on('end', () => {
-        fn(dataArr);
-      });
+    return csvjson.toArray(res);
   }
 
   /**
