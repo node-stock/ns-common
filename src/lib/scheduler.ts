@@ -28,7 +28,6 @@ export class Scheduler {
   }
 
   /**
-	 *
 	 * 执行任务计划
 	 * @param  {Function} fn 具体执行的处理方法
 	 */
