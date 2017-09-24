@@ -3,6 +3,8 @@
  *
  * @module common/util
  */
+import { tryCatch } from './descriptor';
+
 const moment = require('moment');
 const _ = require('lodash');
 require('isomorphic-fetch');
@@ -21,6 +23,7 @@ export class Util {
    * 判断是否为假日
    * @param  {Date} date 日期
    */
+  @tryCatch('判断是否为假日')
   static isHoliday(date: Date) {
     return jpHolidays.isHoliday(date) ? true : false;
   }
@@ -30,6 +33,7 @@ export class Util {
    * @param  {Date} date 日期
 	 * @return {boolean} 周末:true
    */
+  @tryCatch('判断是否为周末')
   static isWeekend(date: Date) {
     return date.getDay() % 6 === 0 ? true : false;
   }
@@ -39,6 +43,7 @@ export class Util {
    * @param  {Date} date 日期
 	 * @return {boolean} 交易日:true
    */
+  @tryCatch('判断是否为交易日')
   static isTradeDate(date: Date) {
     return !this.isHoliday(date) && !this.isWeekend(date);
   }
@@ -48,6 +53,7 @@ export class Util {
    * @func isTradeTime
    * @return {boolean} 现在为交易时间:true
    */
+  @tryCatch('判断是否为交易时间')
   static isTradeTime() {
     if (!this.isTradeDate(new Date())) {
       return false;
@@ -69,6 +75,7 @@ export class Util {
 	 * @func getNowDatetime
 	 * @return {string} 当前日时
 	 */
+  @tryCatch('获取当前日时')
   static getNowDatetime() {
     const date = new DateJs().toString('yyyy-MM-dd HH:mm:ss.ms');
     return date.substr(0, date.length - 1);
@@ -79,6 +86,7 @@ export class Util {
 	 * @func getNowDate
 	 * @return {string} 当前日期
 	 */
+  @tryCatch('获取当前日期')
   static getNowDate() {
     return DateJs.today().toString('yyyy-MM-dd');
   }
@@ -87,7 +95,8 @@ export class Util {
 	 * @func fetch
 	 * @param  {string}   url 资源url路径
 	 */
-  static fetch = async (url: string) => {
+  @tryCatch('获取http资源')
+  static async fetch(url: string) {
     return await fetch(url);
   }
   /**
@@ -96,7 +105,7 @@ export class Util {
    * @param  {string}   code 股票代码
    * @param  {string}   url 资源url路径
    */
-  static getCsvData = async (code: string, url: string) => {
+  static async getCsvData(code: string, url: string) {
     const response = await fetch(url);
     const res = await response.text();
     return csvjson.toArray(res);
@@ -172,4 +181,21 @@ export class Util {
   static isEmpty(obj: any) {
     return !Object.keys(obj).length;
   }
+}
+
+function promiseWrapper(fn: any, args: any) {
+  let callback: any;
+  return new Promise((resolve, reject) => {
+      for (let i = 0; i < args.length; i++) {
+          if (typeof args[i] === 'function') {
+              callback = args[i];
+              args[i] = resolve;
+              break;
+          }
+      }
+      fn.apply(null, args);
+  }).then(() => {
+      console.log(callback.apply)
+      callback.apply(null, arguments)
+  });
 }
