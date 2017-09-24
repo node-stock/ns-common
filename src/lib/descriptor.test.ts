@@ -1,4 +1,4 @@
-import { tryCatch, Log } from './common';
+import { tryCatch, Log, Util } from './common';
 
 class AutoTrade {
   @tryCatch('自动交易准备')
@@ -8,6 +8,10 @@ class AutoTrade {
   @tryCatch('自动交易执行')
   buy() {
     throw new Error('自动交易出错！');
+  }
+  @tryCatch('Promise方法执行')
+  promiseErr() {
+    Util.fetch('xxxzzz:/sdf')
   }
 }
 describe(`装饰器模块测试`, () => {
@@ -23,6 +27,9 @@ describe(`装饰器模块测试`, () => {
   });
   it('testTryCatch', () => {
     autoTrade.buy();
+  });
+  it('testPromiseErr', () => {
+    autoTrade.promiseErr();
   });
 
 });
