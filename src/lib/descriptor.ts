@@ -10,7 +10,8 @@ export const tryCatch = (desc: string) => {
     const method = descriptor.value;
     descriptor.value = (...args: any[]) => {
       const errHandler = (error: any) => {
-        Log[Log.category.system].error(`(${desc}) 失败: ${name}(${JSON.stringify(args)}) =>`, error);
+        const param = args.length !== 0 ? JSON.stringify(args) : '';
+        Log[Log.category.system].error(`(${desc}) 失败: ${name}(${param}) =>`, error);
       }
       // 判断是否为异步函数
       if (method.toString().trim().match(/awaiter/)) {
