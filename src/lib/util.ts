@@ -186,16 +186,16 @@ export class Util {
 function promiseWrapper(fn: any, args: any) {
   let callback: any;
   return new Promise((resolve, reject) => {
-      for (let i = 0; i < args.length; i++) {
-          if (typeof args[i] === 'function') {
-              callback = args[i];
-              args[i] = resolve;
-              break;
-          }
+    for (let i = 0; i < args.length; i++) {
+      if (typeof args[i] === 'function') {
+        callback = args[i];
+        args[i] = resolve;
+        break;
       }
-      fn.apply(null, args);
+    }
+    fn.apply(null, args);
   }).then(() => {
-      console.log(callback.apply)
-      callback.apply(null, arguments)
+    console.log(callback.apply)
+    callback.apply(null, arguments)
   });
 }
