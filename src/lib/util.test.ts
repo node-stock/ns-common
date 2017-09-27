@@ -103,7 +103,7 @@ const testFetch = async (done: any) => {
 
 const testGetCsvData = async (done: any) => {
   const url = 'http://k-db.com/stocks/6553-T?download=csv';
-  const res = await util.getCsvData('3543', url);
+  const res = await util.getCsvData(url);
   console.log(res[1]);
   done();
 }
