@@ -102,10 +102,9 @@ export class Util {
   /**
    * 获取csv格式数据
    * @func getCsvData
-   * @param  {string}   code 股票代码
    * @param  {string}   url 资源url路径
    */
-  static async getCsvData(code: string, url: string) {
+  static async getCsvData(url: string) {
     const response = await fetch(url);
     const res = await response.text();
     return csvjson.toArray(res);
