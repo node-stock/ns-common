@@ -18,7 +18,7 @@ describe(`装饰器模块测试`, () => {
   let autoTrade: any;
   before(() => {
     console.log('测试预处理');
-    Log.init(Log.category.system, Log.level.ALL);
+    Log.init(Log.category.system, Log.level.ALL, 'ns-common');
     autoTrade = new AutoTrade();
   });
 
