@@ -31,12 +31,12 @@ export class Scheduler {
 	 * 执行任务计划
 	 * @param  {Function} fn 具体执行的处理方法
 	 */
-  invok(fn: any) {
+  invok(fn: any, ...args: any[]) {
     if (!fn) {
       return;
     }
     this.reminder = schedule.scheduleJob(this.cron, () => {
-      fn();
+      fn(...args);
     })
   }
 }
