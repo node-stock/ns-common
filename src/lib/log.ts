@@ -55,7 +55,7 @@ export class Log {
   static notify = createLogger(Category.notify);
   static console = createLogger(Category.console);
 
-  static init(category: string, conLev: string) {
+  static init(category: string, conLev: string, filename: string = 'ns') {
     const config = createConfig(category, conLev);
     const appenders: any = {
       'default': { type: 'console' },
@@ -76,7 +76,7 @@ export class Log {
         maxLogSize: 1024 * 1024 * 10,
         backups: 30,
         layout: LogLayout,
-        filename: './logs/ns',
+        filename: './logs/' + filename,
         alwaysIncludePattern: true,
         pattern: '-yyyy-MM-dd.log'
       };

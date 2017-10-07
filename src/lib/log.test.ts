@@ -13,7 +13,7 @@ const testWithoutConfig = () => {
 
   console.log(`--------`);
 
-  Log.init(Log.category.system, Log.level.ALL);
+  Log.init(Log.category.system, Log.level.ALL, 'ns-common');
   Log[CATEGORY].trace(`this is trace with empty config`);
   Log[CATEGORY].debug(`this is debug with empty config`);
   Log[CATEGORY].info(`this is info with empty config`);
