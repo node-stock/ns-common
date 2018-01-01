@@ -186,7 +186,7 @@ export class Util {
    * 返回交易类型：[交易单位，交易类型]
    * @param symbol 商品代码
    */
-  static getTradeUnit(symbol: string) {
+  static getTradeUnit(symbol: string): { amount: string, type: types.AssetType } {
     switch (symbol) {
       case types.Pair.BTC_JPY:
         return { amount: '0.001', type: types.AssetType.Jpy };
@@ -213,7 +213,7 @@ export class Util {
    * 获取交易资产类型
    * @param symbol 商品代码
    */
-  static getTradeAssetType(symbol: string) {
+  static getTradeAssetType(symbol: string): types.AssetType | undefined {
     switch (symbol) {
       case types.Pair.BTC_JPY:
         return types.AssetType.Btc;
