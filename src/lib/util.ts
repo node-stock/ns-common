@@ -190,23 +190,23 @@ export class Util {
   static getTradeUnit(symbol: string) {
     switch (symbol) {
       case types.Pair.BTC_JPY:
-        return { amount: 0.001, type: undefined };
+        return { amount: '0.001', type: undefined };
       case types.Pair.XRP_JPY:
-        return { amount: 20, type: undefined };
+        return { amount: '20', type: undefined };
       case types.Pair.LTC_BTC:
-        return { amount: 0.1, type: 'btc' };
+        return { amount: '0.1', type: 'btc' };
       case types.Pair.ETH_BTC:
-        return { amount: 0.3, type: 'btc' };
+        return { amount: '0.3', type: 'btc' };
       case types.Pair.MONA_JPY:
-        return { amount: 1, type: undefined };
+        return { amount: '1', type: undefined };
       case types.Pair.MONA_BTC:
-        return { amount: 2, type: 'btc' };
+        return { amount: '2', type: 'btc' };
       case types.Pair.BCC_JPY:
-        return { amount: 0.01, type: undefined };
+        return { amount: '0.01', type: undefined };
       case types.Pair.BCC_BTC:
-        return { amount: 0.01, type: 'btc' };
+        return { amount: '0.01', type: 'btc' };
       default:
-        return { amount: 0.001, type: undefined };
+        return { amount: '0.001', type: undefined };
     }
   }
 

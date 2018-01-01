@@ -1,6 +1,6 @@
 {
   "name": "ns-common",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "node-stock common module",
   "keywords": [
     "ns-common",
@@ -21,7 +21,7 @@
     "prepare": "npm run rm && tsc -p tsconfig.json"
   },
   "dependencies": {
-    "csvjson": "^4.3.4",
+    "csvjson": "^5.0.0",
     "datejs": "^1.0.0-rc3",
     "es6-promise": "^4.1.1",
     "isomorphic-fetch": "^2.2.1",
@@ -30,20 +30,20 @@
     "log4js": "^2.3.3",
     "moment": "^2.18.1",
     "node-schedule": "^1.2.4",
-    "ns-types": "0.0.28"
+    "ns-types": "0.0.38"
   },
   "devDependencies": {
     "@types/config": "0.0.32",
-    "@types/log4js": "0.0.32",
+    "@types/datejs": "0.0.30",
+    "@types/log4js": "^2.3.5",
     "@types/mocha": "^2.2.41",
     "@types/node": "^8.0.20",
     "@types/power-assert": "^1.4.29",
     "intelli-espower-loader": "^1.0.1",
-    "@types/datejs": "0.0.30",
-    "mocha": "^3.5.0",
+    "mocha": "^4.1.0",
     "power-assert": "^1.4.4",
     "rimraf": "^2.6.2",
-    "ts-node": "^3.3.0",
+    "ts-node": "^4.1.0",
     "tslint": "^5.6.0",
     "typescript": "^2.4.2"
   }
