@@ -4,6 +4,7 @@
  * @module common/util
  */
 import { tryCatch } from './descriptor';
+import * as types from 'ns-types';
 
 const moment = require('moment');
 const _ = require('lodash');
@@ -180,21 +181,58 @@ export class Util {
   static isEmpty(obj: any) {
     return !Object.keys(obj).length;
   }
-}
 
-function promiseWrapper(fn: any, args: any) {
-  let callback: any;
-  return new Promise((resolve, reject) => {
-    for (let i = 0; i < args.length; i++) {
-      if (typeof args[i] === 'function') {
-        callback = args[i];
-        args[i] = resolve;
-        break;
-      }
+  /**
+   * 返回交易类型：[交易单位，交易类型]
+   * @param symbol 商品代码
+   */
+  static getTradeUnit(symbol: string): { amount: string, type: types.AssetType } {
+    switch (symbol) {
+      case types.Pair.BTC_JPY:
+        return { amount: '0.001', type: types.AssetType.Jpy };
+      case types.Pair.XRP_JPY:
+        return { amount: '20', type: types.AssetType.Jpy };
+      case types.Pair.LTC_BTC:
+        return { amount: '0.1', type: types.AssetType.Btc };
+      case types.Pair.ETH_BTC:
+        return { amount: '0.3', type: types.AssetType.Btc };
+      case types.Pair.MONA_JPY:
+        return { amount: '1', type: types.AssetType.Jpy };
+      case types.Pair.MONA_BTC:
+        return { amount: '2', type: types.AssetType.Btc };
+      case types.Pair.BCC_JPY:
+        return { amount: '0.01', type: types.AssetType.Jpy };
+      case types.Pair.BCC_BTC:
+        return { amount: '0.01', type: types.AssetType.Btc };
+      default:
+        return { amount: '0.001', type: types.AssetType.Jpy };
     }
-    fn.apply(null, args);
-  }).then(() => {
-    console.log(callback.apply)
-    callback.apply(null, arguments)
-  });
+  }
+
+  /**
+   * 获取交易资产类型
+   * @param symbol 商品代码
+   */
+  static getTradeAssetType(symbol: string): types.AssetType | undefined {
+    switch (symbol) {
+      case types.Pair.BTC_JPY:
+        return types.AssetType.Btc;
+      case types.Pair.XRP_JPY:
+        return types.AssetType.Xrp;
+      case types.Pair.LTC_BTC:
+        return types.AssetType.Ltc;
+      case types.Pair.ETH_BTC:
+        return types.AssetType.Eth;
+      case types.Pair.MONA_JPY:
+      case types.Pair.MONA_BTC:
+        return types.AssetType.Mona;
+      case types.Pair.BCC_JPY:
+      case types.Pair.BCC_BTC:
+        return types.AssetType.Bcc;
+    }
+  }
+
+  static getFee(symbol: string) {
+    return symbol.includes('_') ? 0 : 500;
+  }
 }
