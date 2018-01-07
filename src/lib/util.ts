@@ -235,4 +235,13 @@ export class Util {
   static getFee(symbol: string) {
     return symbol.includes('_') ? 0 : 500;
   }
+
+  static getBitbankOrderType(orderType: types.OrderType): types.OrderType.Limit | types.OrderType.Market {
+    let apiOrderType = types.OrderType.Limit;
+    if (orderType === types.OrderType.Market
+      || orderType === types.OrderType.Stop) {
+      apiOrderType = types.OrderType.Market;
+    }
+    return apiOrderType;
+  }
 }

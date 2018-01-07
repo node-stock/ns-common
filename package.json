@@ -1,6 +1,6 @@
 {
   "name": "ns-common",
-  "version": "0.0.15",
+  "version": "0.0.19",
   "description": "node-stock common module",
   "keywords": [
     "ns-common",
@@ -30,7 +30,7 @@
     "log4js": "^2.3.3",
     "moment": "^2.18.1",
     "node-schedule": "^1.2.5",
-    "ns-types": "0.0.40"
+    "ns-types": "0.0.62"
   },
   "devDependencies": {
     "@types/config": "0.0.32",
